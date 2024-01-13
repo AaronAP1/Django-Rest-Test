@@ -11,5 +11,5 @@ router.register('api/clvrec', RecaudacionClvviem, 'Recaudaciones')
 
 urlpatterns = [
     path('', mi_pagina, name='mi_pagina'),  # Agrega esta línea para tu página personalizada
-    path('xxx', include(router.urls)),
+    path('consumo/', include(router.urls)),
 ]
