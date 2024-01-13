@@ -18,7 +18,7 @@ class CobrosAdmin(ImportExportActionModelAdmin):
 @admin.register(Recaudaciones)
 class RecaudacionesAdmin(ImportExportActionModelAdmin):
     resource_class = RecaudacionesResource
-    list_display = ('NUMERO_DE_RECIBO','CODIGO_INTEGRANTE','APELLIDOS_NOMBRES','GRUPO','DESCRIPCION_RECIBO','IMP_RECIBO','FECHA_VENCIMIENTO','DIA_MORA','IMP_MORA','IMP_TOTAL','FECHA_PAGO','MZLTE','FORMA_PAGO','CALC_MORA','FECHA_ACTUALIZADA')
+    list_display = ('CODIGO_INTEGRANTE','NUMERO_DE_RECIBO','APELLIDOS_NOMBRES','GRUPO','DESCRIPCION_RECIBO','IMP_RECIBO','FECHA_VENCIMIENTO','DIA_MORA','IMP_MORA','IMP_TOTAL','FECHA_PAGO','MZLTE','FORMA_PAGO','CALC_MORA','FECHA_ACTUALIZADA')
     search_fields = ('CODIGO_INTEGRANTE',)
 
 # Register your models here.

@@ -38,8 +38,8 @@ class DataConsolidado(models.Model):
 
 class Cobros(models.Model):
     ID_COBROS = models.CharField(primary_key=True)
-    NUMERO_DE_RECIBO = models.CharField()
     CODIGO_INTEGRANTE = models.CharField(null=True)
+    NUMERO_DE_RECIBO = models.CharField()
     APELLIDO_PATERNO = models.TextField( null=True)
     APELLIDO_MATERNO = models.TextField( null=True)
     NOMBRES = models.TextField( null=True)
@@ -59,8 +59,8 @@ class Cobros(models.Model):
 
 class Recaudaciones(models.Model):
     ID_RECAUDACIONES = models.CharField(primary_key=True)
-    NUMERO_DE_RECIBO = models.CharField(null=True)
     CODIGO_INTEGRANTE = models.CharField(null=True)
+    NUMERO_DE_RECIBO = models.CharField(null=True)
     APELLIDOS_NOMBRES = models.TextField(null=True)
     GRUPO = models.CharField(null=True)
     DESCRIPCION_RECIBO = models.CharField(null=True)
