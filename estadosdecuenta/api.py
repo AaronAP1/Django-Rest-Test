@@ -5,15 +5,15 @@ from .serializers import ClvDataSerializer, ClvCobrosSerializer, ClvRecaudacione
 
 class DataClvviem(viewsets.ModelViewSet):
     queryset = DataConsolidado.objects.all()
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     serializer_class = ClvDataSerializer
 
 class CobrosClvviem(viewsets.ModelViewSet):
     queryset = Cobros.objects.all()
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     serializer_class = ClvCobrosSerializer
 
 class RecaudacionClvviem(viewsets.ModelViewSet):
     queryset = Recaudaciones.objects.all()
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     serializer_class = ClvRecaudacionesSerializer
