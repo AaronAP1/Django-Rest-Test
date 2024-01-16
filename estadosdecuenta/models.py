@@ -4,7 +4,7 @@ from django.db import models
 class DataConsolidado(models.Model):
     ID_DATOS = models.CharField(primary_key=True, db_column='IDDATOS')
     ITEM = models.IntegerField()
-    CODIGO_DE_PAGO = models.CharField(unique=True, null=True, db_column='CÓDIGO DE PAGO')
+    CODIGO_DE_PAGO = models.CharField(unique=True, null=True, db_column='CODIGO DE PAGO')
     MZLTS = models.CharField(null=True)
     CAPTACION = models.DateField(null=True)
     ASESOR = models.TextField(null=True)
@@ -32,6 +32,34 @@ class DataConsolidado(models.Model):
     SVENCIDOS = models.CharField(null=True)
     SPAGADOS = models.CharField(null=True)
     COMENTARIO = models.TextField(null=True)
+
+    # Método para obtener información de Cobros relacionados
+    def obtener_info_cobros(self):
+        return Cobros.objects.filter(CODIGO_INTEGRANTE=self.CODIGO_DE_PAGO).values(
+            'NUMERO_DE_RECIBO',
+            'DESCRIPCION_COBRO_REALIZAR',
+            'IMPORTE_COBRO_CONCEPTO_1',
+            'FECHA_VENCIMIENTO_RECIBO',
+            'INDICADOR_COBRO_MORA',
+            'OBSERVACIONES_RECIBO'
+        )
+
+    # Método para obtener información de Recaudaciones relacionadas
+    def obtener_info_recaudaciones(self):
+        return Recaudaciones.objects.filter(CODIGO_INTEGRANTE=self.CODIGO_DE_PAGO).values(
+            'NUMERO_DE_RECIBO',
+            'DESCRIPCION_RECIBO',
+            'IMP_RECIBO',
+            'FECHA_VENCIMIENTO',
+            'DIA_MORA',
+            'IMP_MORA',
+            'IMP_TOTAL',
+            'FECHA_PAGO',
+            'MZLTE',
+            'FORMA_PAGO',
+            'CALC_MORA',
+            'FECHA_ACTUALIZADA'
+        )
 
   
     
