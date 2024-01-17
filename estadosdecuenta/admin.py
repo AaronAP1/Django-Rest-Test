@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import DataConsolidado, Cobros, Recaudaciones
 from import_export.admin import ImportExportActionModelAdmin
 from .resources import DataConsolidadoResource, CobrosResource, RecaudacionesResource
+from .tasks import import_cobros_async
 
 
 
@@ -13,8 +14,21 @@ class DataConsolidadoAdmin(ImportExportActionModelAdmin):
 @admin.register(Cobros)
 class CobrosAdmin(ImportExportActionModelAdmin):
     resource_class = CobrosResource
-    list_display = ('NUMERO_DE_RECIBO','CODIGO_INTEGRANTE','APELLIDO_PATERNO','APELLIDO_MATERNO','NOMBRES','CODIGO_DE_GRUPO_INTEGRANTES','FECHA_EMICION_RECIBO','FECHA_VENCIMIENTO_RECIBO','MONEDA_A_PAGAR','CODIGO_REFERENCIA_CLIENTE','DESCRIPCION_COBRO_REALIZAR','OBSERVACIONES_RECIBO','INDICADOR_COBRO_MORA','CODIGO_CONCEPTO_1','IMPORTE_COBRO_COMPLETO','IMPORTE_COBRO_CONCEPTO_1')
+    list_display = ('NUMERO_DE_RECIBO', 'CODIGO_INTEGRANTE', 'APELLIDO_PATERNO', 'APELLIDO_MATERNO', 'NOMBRES', 'CODIGO_DE_GRUPO_INTEGRANTES', 'FECHA_EMICION_RECIBO', 'FECHA_VENCIMIENTO_RECIBO', 'MONEDA_A_PAGAR', 'CODIGO_REFERENCIA_CLIENTE', 'DESCRIPCION_COBRO_REALIZAR', 'OBSERVACIONES_RECIBO', 'INDICADOR_COBRO_MORA', 'CODIGO_CONCEPTO_1', 'IMPORTE_COBRO_CONCEPTO_1')
     search_fields = ('CODIGO_INTEGRANTE',)
+
+    actions = ['import_cobros']
+
+    def import_cobros(self, request, queryset):
+        for cobro in queryset:
+            # Obtén el contenido del archivo o URL del campo que contiene el archivo
+            file_data = cobro.campo_que_contiene_el_archivo.read()
+            
+            # Llama a la tarea Celery para procesar la importación de manera asincrónica
+            import_cobros_async.delay(file_data)
+
+        self.message_user(request, "La importación de cobros está en proceso. Verifica el estado en la página de procesamiento.")
+    import_cobros.short_description = "Importar cobros seleccionados de manera asincrónica"
 @admin.register(Recaudaciones)
 class RecaudacionesAdmin(ImportExportActionModelAdmin):
     resource_class = RecaudacionesResource

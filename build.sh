@@ -28,3 +28,7 @@ fi
 
 # Finalizar con un mensaje
 echo "¡Script de construcción completado con éxito!"
+
+
+
+gunicorn myapp.wsgi:application --timeout 300
