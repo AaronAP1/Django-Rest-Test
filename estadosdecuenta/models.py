@@ -72,7 +72,7 @@ class Cobros(models.Model):
     APELLIDO_MATERNO = models.TextField( null=True)
     NOMBRES = models.TextField( null=True)
     CODIGO_DE_GRUPO_INTEGRANTES = models.CharField( null=True)
-    FECHA_EMICION_RECIBO = models.DateTimeField(auto_now_add=True)
+    FECHA_EMICION_RECIBO = models.DateTimeField()
     FECHA_VENCIMIENTO_RECIBO = models.DateField()
     MONEDA_A_PAGAR = models.CharField( null=True)
     CODIGO_REFERENCIA_CLIENTE = models.CharField(null=True)
@@ -80,6 +80,7 @@ class Cobros(models.Model):
     OBSERVACIONES_RECIBO = models.TextField( null=True)
     INDICADOR_COBRO_MORA = models.CharField( null=True)
     CODIGO_CONCEPTO_1 = models.CharField(null=True)
+    IMPORTE_COBRO_COMPLETO = models.CharField(null=True)
     IMPORTE_COBRO_CONCEPTO_1 = models.CharField(null=True)
 
 
