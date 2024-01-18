@@ -38,7 +38,7 @@ class DataConsolidado(models.Model):
         return Cobros.objects.filter(CODIGO_INTEGRANTE=self.CODIGO_DE_PAGO).values(
             'NUMERO_DE_RECIBO',
             'DESCRIPCION_COBRO_REALIZAR',
-            'IMPORTE_COBRO_CONCEPTO_1',
+            'IMPORTE_COBRO_COMPLETO',
             'FECHA_VENCIMIENTO_RECIBO',
             'INDICADOR_COBRO_MORA',
             'OBSERVACIONES_RECIBO'
