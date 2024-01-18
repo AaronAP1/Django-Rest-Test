@@ -31,4 +31,3 @@ echo "¡Script de construcción completado con éxito!"
 
 
 
-gunicorn djangoresttest.wsgi:application --timeout 300

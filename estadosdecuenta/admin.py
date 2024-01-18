@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import DataConsolidado, Cobros, Recaudaciones
 from import_export.admin import ImportExportActionModelAdmin
 from .resources import DataConsolidadoResource, CobrosResource, RecaudacionesResource
-from .tasks import import_cobros_async
+
 
 
 
@@ -19,16 +19,6 @@ class CobrosAdmin(ImportExportActionModelAdmin):
 
     actions = ['import_cobros']
 
-    def import_cobros(self, request, queryset):
-        for cobro in queryset:
-            # Obtén el contenido del archivo o URL del campo que contiene el archivo
-            file_data = cobro.campo_que_contiene_el_archivo.read()
-            
-            # Llama a la tarea Celery para procesar la importación de manera asincrónica
-            import_cobros_async.delay(file_data)
-
-        self.message_user(request, "La importación de cobros está en proceso. Verifica el estado en la página de procesamiento.")
-    import_cobros.short_description = "Importar cobros seleccionados de manera asincrónica"
 @admin.register(Recaudaciones)
 class RecaudacionesAdmin(ImportExportActionModelAdmin):
     resource_class = RecaudacionesResource
