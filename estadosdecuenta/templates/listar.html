@@ -229,25 +229,25 @@
   </div>
 
 
-  <div class="container2">
+  <div class="container2" id="reciboTable">
     <table class="">
-      <thead>
-        <tr>
-          <th>Recibo</th>
-          <th>Descripción recibo</th>
-          <th>Pagado</th>
-          <th>Fecha de Pago</th>
-          <th>Forma Pago</th>
-        </tr>
-      </thead>
-      <tbody style="color: black;">
-        <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
-      </tbody>
+        <thead>
+            <tr>
+                <th>Recibo</th>
+                <th>Descripción recibo</th>
+                <th>Pagado</th>
+                <th>Fecha de Pago</th>
+                <th>Forma Pago</th>
+            </tr>
+        </thead>
+        <tbody style="color: black;">
+            <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
+        </tbody>
     </table>
-  </div>
+</div>
 
 
-  <div class="container2" style="margin-top: 50px;">
+  <div class="container2" style="margin-top: 50px;" id="cobrosTable">
     <table class="">
       <thead>
         <tr>
@@ -266,7 +266,7 @@
   </div>
 
 
-  <script>
+  <script>   // Script de informacion de la persona listo
     function buscarDatos() {
       var CODIGO_DE_PAGO = document.getElementById('CODIGO_DE_PAGO').value;
 
@@ -296,7 +296,7 @@
     }
   </script>
 
-  <script>
+  <script>  //Script de RECAUDACIONES 
     function buscarDatos2() {
       // Obtén el valor del input de búsqueda
       const CODIGO_DE_PAGO = document.getElementById("CODIGO_DE_PAGO").value;
@@ -319,7 +319,7 @@
 
     function actualizarTabla(data) {
       // Obtén la referencia a la tabla
-      const tabla = document.querySelector("table tbody");
+      const tabla = document.querySelector("#reciboTable table tbody");
 
       // Limpia el contenido actual de la tabla
       tabla.innerHTML = '';
@@ -343,6 +343,55 @@
       }
     }
   </script>
+
+<script>  //Script de COBROS
+  function buscarDatos3() {
+    // Obtén el valor del input de búsqueda
+    const CODIGO_DE_PAGO = document.getElementById("CODIGO_DE_PAGO").value;
+
+    // Construye la URL de la API (reemplaza la URL de ejemplo con la URL real de tu API)
+    const apiUrl = `http://127.0.0.1:8000/consultacobros/` + CODIGO_DE_PAGO;
+
+    // Realiza la solicitud a la API usando fetch
+    fetch(apiUrl)
+      .then(response => response.json()) // Parsea la respuesta a JSON
+      .then(data => {
+        console.log('Datos de la API COBROS:', data); // Agrega este console.log
+        // Manipula los datos de la respuesta y actualiza la tabla
+        actualizarTabla2(data);
+      })
+      .catch(error => {
+        console.error('Error al realizar la solicitud a la API:', error);
+      });
+  }
+
+  function actualizarTabla2(data) {
+    // Obtén la referencia a la tabla
+    const tabla = document.querySelector("#cobrosTable table tbody");
+
+    // Limpia el contenido actual de la tabla
+    tabla.innerHTML = '';
+
+    // Verifica si los datos son un array y si hay al menos un elemento
+    if (Array.isArray(data) && data.length > 0) {
+      // Itera sobre los datos y crea filas para la tabla
+      data.forEach(item => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+        <td>${item.c_numero_recibo}</td>
+        <td>${item.c_descripcion}</td>
+        <td>${item.c_importe}</td>
+        <td>${item.c_fecha_vencimiento}</td>
+        <td>${item.c_indicador_mora}</td>
+        <td>${item.c_observaciones}</td>
+      `;
+        tabla.appendChild(fila);
+      });
+    } else {
+      console.log('No se encontraron datos para el código de pago especificado.');
+    }
+  }
+</script>
 
 
 

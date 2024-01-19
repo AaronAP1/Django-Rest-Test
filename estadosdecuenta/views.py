@@ -20,7 +20,7 @@ def tu_vista(request, codigo_pago):
         SELECT
             c."NUMERO_DE_RECIBO" AS c_numero_recibo,
             c."DESCRIPCION_COBRO_REALIZAR" AS c_descripcion,
-            c."IMPORTE_COBRO_CONCEPTO_1" AS c_importe,
+            c."IMPORTE_COBRO_COMPLETO" AS c_importe,
             c."FECHA_VENCIMIENTO_RECIBO" AS c_fecha_vencimiento,
             c."INDICADOR_COBRO_MORA" AS c_indicador_mora,
             c."OBSERVACIONES_RECIBO" AS c_observaciones
@@ -52,7 +52,7 @@ def tu_vista(request, codigo_pago):
     return JsonResponse(data, safe=False)
 
 
-def tu_vista2(request, codigo_pago):
+def recaudacionesbusqueda(request, codigo_pago):
     with connection.cursor() as cursor:
         # Nueva consulta SQL personalizada
         consulta = """
