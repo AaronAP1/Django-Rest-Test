@@ -52,7 +52,7 @@
     }
 
     .form-column {
-      flex: 48%; /* Puedes ajustar este valor según tus necesidades */
+      flex: 48%;
       margin-bottom: 10px;
     }
 
@@ -71,7 +71,7 @@
     }
 
     select {
-      width: calc(100% - 16px); /* Ajuste para compensar el relleno en el select */
+      width: calc(100% - 16px);
       padding: 8px;
       margin-top: 5px;
       box-sizing: border-box;
@@ -108,95 +108,137 @@
 <body>
   <nav class="navbar">
     <div>
-      <img src="https://media.discordapp.net/attachments/1197687583241670776/1197687686786453534/WhatsApp_Image_2023-11-20_at_8.11_2.png?ex=65bc2c94&is=65a9b794&hm=9130407c76d1690922695bf20c1a6a7e0a7ef3c1db242fbdb3798c37f50e8373&=&format=webp&quality=lossless" alt="Logo" class="logo">
+      <img src="https://media.discordapp.net/attachments/1197687583241670776/1197687686786453534/WhatsApp_Image_2023-11-20_at_8.11_2.png?ex=65bc2c94&is=65a9b794&hm=9130407c76d1690922695bf20c1a6a7e0a7ef3c1db242fbdb3798c37f50e8373&=&format=webp&quality=lossless"
+        alt="Logo" class="logo">
     </div>
     <div class="search-containers">
-      <input type="text" placeholder="Codigo des Pago" class="search-input">
-      <button class="search-buttons">Buscar</button>
+      <input type="text" class="search-input" id="CODIGO_DE_PAGO" placeholder="Codigo de Pago">
+      <button class="search-buttons" onclick="buscarDatos()">Buscar</button>
     </div>
   </nav>
 
   <div class="container">
     <div class="card-body">
-      <form id="myForm" onsubmit="return validar()">
+      <form>
         <div class="form-group form-columns">
-
           <div class="form-column">
             <legend style="color: black; font-weight: bold;">Datos de la Cuenta</legend>
 
-            <label for="user" style="color: black; margin-top: 10px;">Asesor:</label>
-            <input type="text" class="form-control" id="user" placeholder="Usuario">
+            <label for="ASESOR" style="color: black; margin-top: 10px;">Asesor:</label>
+            <input type="text" class="form-control" id="ASESOR">
+ 
+            <label for="MZLTS" style="color: black; margin-top: 10px;">MZLTS:</label>
+            <input type="text" class="form-control" id="MZLTS">
 
-            <label for="email" style="color: black; margin-top: 10px;">MZLTS:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="CAPTACION" style="color: black; margin-top: 10px;">Captación:</label>
+            <input type="text" class="form-control" id="CAPTACION">
 
-            <label for="pass1" style="color: black; margin-top: 10px;">Captación:<nav></nav></label>
-            <input type="password" class="form-control" id="pass1" placeholder="Contraseña">
+            <label for="APELLIDO_PATERNO" style="color: black; margin-top: 10px;">Apellido Paterno:</label>
+            <input type="text" class="form-control" id="APELLIDO_PATERNO">
 
-            <label for="email" style="color: black; margin-top: 10px;">Apellido Paterno:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="APELLIDO_MATERNO" style="color: black; margin-top: 10px;">Apellido Materno:</label>
+            <input type="text" class="form-control" id="APELLIDO_MATERNO">
 
-            <label for="email" style="color: black; margin-top: 10px;">Apellido Materno:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="NOMBRES" style="color: black; margin-top: 10px;">Nombres:</label>
+            <input type="text" class="form-control" id="NOMBRES">
 
-            <label for="email" style="color: black; margin-top: 10px;">Nombres:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="DOC" style="color: black; margin-top: 10px;">Doc:</label>
+            <input type="text" class="form-control" id="DOC">
 
-            <label for="email" style="color: black; margin-top: 10px;">Doc:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="INICIOPAGO" style="color: black; margin-top: 10px;">Inicio Pago:</label>
+            <input type="text" class="form-control" id="INICIOPAGO">
 
-            <label for="email" style="color: black; margin-top: 10px;">Inicio Pago:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="INICIAL" style="color: black; margin-top: 10px;">Inicial:</label>
+            <input type="text" class="form-control" id="INICIAL">
 
-            <label for="email" style="color: black; margin-top: 10px;">Inicial:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="CUOTAS" style="color: black; margin-top: 10px;">Cuotas:</label>
+            <input type="text" class="form-control" id="CUOTAS" autocomplete="on">
 
-            <label for="email" style="color: black; margin-top: 10px;">Cuotas:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
-
-            <label for="email" style="color: black; margin-top: 10px;">Comentario:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
-
+            <label for="COMENTARIO" style="color: black; margin-top: 10px;">Comentario:</label>
+            <input type="text" class="form-control" id="COMENTARIO" autocomplete="on">
           </div>
           <div class="form-column" style="margin-left: 20px;">
-            <label for="pass2" style="color: black; margin-top: 29px;">Numero:</label>
-            <input type="password" class="form-control" id="pass2" placeholder="Repetir Contraseña">
+            <label for="NUMERO" style="color: black; margin-top: 29px;">Numero:</label>
+            <input type="password" class="form-control" id="NUMERO">
 
-            <label for="codipos" style="color: black; margin-top: 10px;">Dirección:</label>
-            <input type="text" class="form-control" id="codipos" placeholder="Código Postal">
+            <label for="DIRECCION" style="color: black; margin-top: 10px;">Dirección:</label>
+            <input type="text" class="form-control" id="DIRECCION">
 
-            <label for="email" style="color: black; margin-top: 10px;">Distrito:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="DISTRITO" style="color: black; margin-top: 10px;">Distrito:</label>
+            <input type="text" class="form-control" id="DISTRITO">
 
-            <label for="email" style="color: black; margin-top: 10px;">Celular:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="CELULAR" style="color: black; margin-top: 10px;">Celular:</label>
+            <input type="text" class="form-control" id="CELULAR">
 
-            <label for="email" style="color: black; margin-top: 10px;">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="EMAIL" style="color: black; margin-top: 10px;">Email:</label>
+            <input type="email" class="form-control" id="EMAIL">
 
-            <label for="email" style="color: black; margin-top: 10px;">M2:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="M2" style="color: black; margin-top: 10px;">M2:</label>
+            <input type="text" class="form-control" id="M2">
 
-            <label for="email" style="color: black; margin-top: 10px;">Ubicación:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="UBICACION" style="color: black; margin-top: 10px;">Ubicación:</label>
+            <input type="text" class="form-control" id="UBICACION">
 
-            <label for="email" style="color: black; margin-top: 10px;">Precio Venta:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="PRECIOVENTA" style="color: black; margin-top: 10px;">Precio Venta:</label>
+            <input type="text" class="form-control" id="PRECIOVENTA">
 
-            <label for="email" style="color: black; margin-top: 10px;">Saldo:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="SALDO" style="color: black; margin-top: 10px;">Saldo:</label>
+            <input type="text" class="form-control" id="SALDO">
 
-            <label for="email" style="color: black; margin-top: 10px;">Cuota Mensual:</label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
-
+            <label for="CUOTA" style="color: black; margin-top: 10px;">Cuota Mensual:</label>
+            <input type="text" class="form-control" id="CUOTA">
           </div>
         </div>
-
-
-
       </form>
     </div>
   </div>
-</body>
 
+
+  <script>
+    function buscarDatos() {
+      // Obtén el valor del código de pago
+      var CODIGO_DE_PAGO = document.getElementById('CODIGO_DE_PAGO').value;
+  
+      // Realiza la solicitud a tu API (reemplaza 'tu_api_url' con la URL de tu API)
+      fetch('http://127.0.0.1:8000/consumo/api/clvdat/' + CODIGO_DE_PAGO )
+        .then(response => response.json())
+        .then(data => {
+  
+          console.log('Datos de la API:', data);
+          document.getElementById('ASESOR').value = data.ASESOR || '';
+          document.getElementById('MZLTS').value = data.MZLTS || '';
+          document.getElementById('CAPTACION').value = data.CAPTACION || '';
+          document.getElementById('APELLIDO_PATERNO').value = data.APELLIDO_PATERNO || '';
+          document.getElementById('APELLIDO_MATERNO').value = data.APELLIDO_MATERNO || '';
+          document.getElementById('NOMBRES').value = data.NOMBRES || '';
+          document.getElementById('DOC').value = data.DOC || '';
+          document.getElementById('INICIOPAGO').value = data.INICIOPAGO || '';
+          document.getElementById('INICIAL').value = data.INICIAL || '';
+          document.getElementById('CUOTAS').value = data.CUOTAS || '';
+          document.getElementById('COMENTARIO').value = data.COMENTARIO || '';
+          document.getElementById('NUMERO').value = data.NUMERO || '';
+          document.getElementById('DIRECCION').value = data.DIRECCION || '';
+          document.getElementById('DISTRITO').value = data.DISTRITO || '';
+          document.getElementById('CELULAR').value = data.CELULAR || '';
+          document.getElementById('EMAIL').value = data.EMAIL || '';
+          document.getElementById('M2').value = data.M2 || '';
+          document.getElementById('UBICACION').value = data.UBICACION || '';
+          document.getElementById('PRECIOVENTA').value = data.PRECIOVENTA || '';
+          document.getElementById('SALDO').value = data.SALDO || '';
+          document.getElementById('CUOTA').value = data.CUOTA || '';
+  
+          // Puedes agregar más lógica aquí según la estructura de tu API y tu formulario
+        })
+        .catch(error => {
+          console.error('Error al obtener datos de la API:', error);
+          // Puedes manejar el error de la manera que desees
+        });
+    }
+  </script>
+
+
+
+</body>
 </html>
+
+

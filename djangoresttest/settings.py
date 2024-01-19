@@ -90,9 +90,9 @@ WSGI_APPLICATION = 'djangoresttest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'clvback',
+        'NAME': 'prueba',
         'USER' : 'postgres',
-        'PASSWORD' : 'root',
+        'PASSWORD' : 'aliaga2021',
         'HOST' : 'localhost',
         'PORT' : '5432'
     }
