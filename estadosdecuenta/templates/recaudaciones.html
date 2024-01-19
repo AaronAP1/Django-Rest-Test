@@ -41,14 +41,21 @@
       display: block;
     }
 
-    .btn-success {
-      background-color: #28a745;
-      color: #fff;
+    .search-containers {
+      display: flex;
+      align-items: center;
     }
 
-    .btn-danger {
-      background-color: #dc3545;
+    .search-input {
+      margin-right: 10px;
+    }
+
+    .search-buttons {
+      background-color: #1F730F;
       color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
     }
 
     table {
@@ -75,6 +82,54 @@
       background-color: rgba(255, 150, 0, 0.3);
     }
   </style>
+
+<script>
+  function buscarDatos() {
+    // Obtén el valor del input de búsqueda
+    const CODIGO_DE_PAGO = document.getElementById("CODIGO_DE_PAGO").value;
+
+    // Construye la URL de la API (reemplaza la URL de ejemplo con la URL real de tu API)
+    const apiUrl = `http://127.0.0.1:8000/consultarecau/` + CODIGO_DE_PAGO;
+
+    // Realiza la solicitud a la API usando fetch
+    fetch(apiUrl)
+      .then(response => response.json()) // Parsea la respuesta a JSON
+      .then(data => {
+        console.log('Datos de la API:', data); // Agrega este console.log
+        // Manipula los datos de la respuesta y actualiza la tabla
+        actualizarTabla(data);
+      })
+      .catch(error => {
+        console.error('Error al realizar la solicitud a la API:', error);
+      });
+  }
+
+  function actualizarTabla(data) {
+    // Obtén la referencia a la tabla
+    const tabla = document.querySelector("table tbody");
+
+    // Limpia el contenido actual de la tabla
+    tabla.innerHTML = '';
+
+    // Verifica si los datos son un array y si hay al menos un elemento
+    if (Array.isArray(data) && data.length > 0) {
+      // Itera sobre los datos y crea filas para la tabla
+      data.forEach(item => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+          <td>${item.cobro_numero_recibo}</td>
+          <td>${item.cobro_descripcion}</td>
+          <td>${item.cobro_importe}</td>
+          <td>${item.cobro_fecha_vencimiento}</td>
+          <td>${item.cobro_forma_pago}</td>
+        `;
+        tabla.appendChild(fila);
+      });
+    } else {
+      console.log('No se encontraron datos para el código de pago especificado.');
+    }
+  }
+</script>
 </head>
 
 <body>
@@ -84,7 +139,7 @@
         alt="Logo" class="logo">
     </div>
     <div class="search-containers">
-      <input type="text" class="search-input" id="CODIGO_DE_PAGO" placeholder="Codigo de Pago">
+      <input type="text" class="search-input" id="CODIGO_DE_PAGO" placeholder="CODIGO DE PAGO">
       <button class="search-buttons" onclick="buscarDatos()">Buscar</button>
     </div>
   </nav>
@@ -100,43 +155,11 @@
             <th>Forma Pago</th>
           </tr>
         </thead>
-        <tbody>
-          <tr style="color: black;">
-            <td>Dato 1</td>
-            <td>Dato 2</td>
-            <td>Dato 3</td>
-            <td>Dato 4</td>
-            <td>Dato 5</td>
-          </tr>
-          <tr style="color: black;">
-            <td>Dato 1</td>
-            <td>Dato 2</td>
-            <td>Dato 3</td>
-            <td>Dato 4</td>
-            <td>Dato 5</td>
-          </tr>
-          <tr style="color: black;">
-            <td>Dato 1</td>
-            <td>Dato 2</td>
-            <td>Dato 3</td>
-            <td>Dato 4</td>
-            <td>Dato 5</td>
-          </tr>
-          <tr style="color: black;">
-            <td>Dato 1</td>
-            <td>Dato 2</td>
-            <td>Dato 3</td>
-            <td>Dato 4</td>
-            <td>Dato 5</td>
-          </tr>
+        <tbody style="color: black;">
+          <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
         </tbody>
       </table>
-
   </div>
-
-
-
 </body>
+
 </html>
-
-
