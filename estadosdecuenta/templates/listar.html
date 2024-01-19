@@ -103,39 +103,57 @@
       color: #fff;
     }
 
-    table {
-      width: 80%;
-      margin-top: 20px;
-      border-collapse: collapse;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      background: #fff;
-      border-radius: 10px;
-    }
+    .tables-container {
+  display: flex;
+  justify-content: space-around;
+  overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si es necesario */
+}
 
-    th,
-    td {
-      padding: 15px;
-      text-align: left;
-    }
+.container2 {
+  position: relative;
+  max-height: 400px;
+  overflow-y: auto;
+  width: 140%; /* Ajusta según sea necesario */
+  margin-top: 50px;
+  margin-left: 60px;
+  margin-right: 30px;
+}
 
-    th {
-      background-color: #4CAF50;
-      color: white;
-    }
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-    tr:hover {
-      background-color: rgba(255, 150, 0, 0.3);
-    }
+th, td {
+  padding: 15px;
+  text-align: left;
+}
 
-    .container2 {
-      max-height: 400px;
-      /* Establece la altura máxima deseada */
-      overflow-y: auto;
-      display: flex;
-      justify-content: center;
-      /* Añade una barra de desplazamiento vertical si es necesario */
-    }
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:hover {
+  background-color: rgba(255, 150, 0, 0.3);
+}
+
+thead tr {
+  position: sticky !important;
+  top: 0;
+  background-color: #f2f2f2;
+}
+footer {
+  background-color: #1F730F;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.containerflo {
+  max-width: 1200px;
+  margin: 0 auto;
+}
   </style>
 </head>
 
@@ -229,43 +247,52 @@
   </div>
 
 
-  <div class="container2" id="reciboTable">
-    <table class="">
-        <thead>
-            <tr>
-                <th>Recibo</th>
-                <th>Descripción recibo</th>
-                <th>Pagado</th>
-                <th>Fecha de Pago</th>
-                <th>Forma Pago</th>
-            </tr>
-        </thead>
-        <tbody style="color: black;">
-            <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
-        </tbody>
-    </table>
+  <div class="tables-container">
+    
+
+    <div class="container2" id="cobrosTable">
+        <table class="">
+            <thead>
+                <tr>
+                    <th>Recibo</th>
+                    <th>Descripción recibo</th>
+                    <th>Importe</th>
+                    <th>Vencimiento</th>
+                    <th>Estado</th>
+                    <th>Vencido</th>
+                </tr>
+            </thead>
+            <tbody style="color: black;">
+                <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container2" id="reciboTable">
+      <table class="">
+          <thead>
+              <tr>
+                  <th>Recibo</th>
+                  <th>Descripción recibo</th>
+                  <th>Pagado</th>
+                  <th>Fecha de Pago</th>
+                  <th>Forma Pago</th>
+              </tr>
+          </thead>
+          <tbody style="color: black;">
+              <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
+          </tbody>
+      </table>
+  </div>
 </div>
 
+<br><br><br><br><br><br>
 
-  <div class="container2" style="margin-top: 50px;" id="cobrosTable">
-    <table class="">
-      <thead>
-        <tr>
-          <th>Recibo</th>
-          <th>Descripción recibo</th>
-          <th>Importe</th>
-          <th>Vencimiento</th>
-          <th>Estado</th>
-          <th>Vencido</th>
-        </tr>
-      </thead>
-      <tbody style="color: black;">
-        <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
-      </tbody>
-    </table>
+<footer>
+  <div class="containerflo">
+    <p>&copy; 2024 Constructora la Venta  | Todos los derechos reservados</p>
   </div>
-
-
+</footer>
   <script>   // Script de informacion de la persona listo
     function buscarDatos() {
       var CODIGO_DE_PAGO = document.getElementById('CODIGO_DE_PAGO').value;
