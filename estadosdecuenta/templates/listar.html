@@ -159,7 +159,7 @@
           </div>
           <div class="form-column" style="margin-left: 20px;">
             <label for="NUMERO" style="color: black; margin-top: 29px;">Numero:</label>
-            <input type="password" class="form-control" id="NUMERO">
+            <input type="text" class="form-control" id="NUMERO">
 
             <label for="DIRECCION" style="color: black; margin-top: 10px;">Dirección:</label>
             <input type="text" class="form-control" id="DIRECCION">
@@ -200,34 +200,29 @@
       var CODIGO_DE_PAGO = document.getElementById('CODIGO_DE_PAGO').value;
   
       // Realiza la solicitud a tu API (reemplaza 'tu_api_url' con la URL de tu API)
-      fetch('http://127.0.0.1:8000/consumo/api/clvdat/' + CODIGO_DE_PAGO )
+      fetch('http://127.0.0.1:8000/consumo/api/clvdat/' + CODIGO_DE_PAGO)
         .then(response => response.json())
-        .then(data => {
+        .then(dataArray => {
+          console.log('Datos de la API:', dataArray);
   
-          console.log('Datos de la API:', data);
-          document.getElementById('ASESOR').value = data.ASESOR || '';
-          document.getElementById('MZLTS').value = data.MZLTS || '';
-          document.getElementById('CAPTACION').value = data.CAPTACION || '';
-          document.getElementById('APELLIDO_PATERNO').value = data.APELLIDO_PATERNO || '';
-          document.getElementById('APELLIDO_MATERNO').value = data.APELLIDO_MATERNO || '';
-          document.getElementById('NOMBRES').value = data.NOMBRES || '';
-          document.getElementById('DOC').value = data.DOC || '';
-          document.getElementById('INICIOPAGO').value = data.INICIOPAGO || '';
-          document.getElementById('INICIAL').value = data.INICIAL || '';
-          document.getElementById('CUOTAS').value = data.CUOTAS || '';
-          document.getElementById('COMENTARIO').value = data.COMENTARIO || '';
-          document.getElementById('NUMERO').value = data.NUMERO || '';
-          document.getElementById('DIRECCION').value = data.DIRECCION || '';
-          document.getElementById('DISTRITO').value = data.DISTRITO || '';
-          document.getElementById('CELULAR').value = data.CELULAR || '';
-          document.getElementById('EMAIL').value = data.EMAIL || '';
-          document.getElementById('M2').value = data.M2 || '';
-          document.getElementById('UBICACION').value = data.UBICACION || '';
-          document.getElementById('PRECIOVENTA').value = data.PRECIOVENTA || '';
-          document.getElementById('SALDO').value = data.SALDO || '';
-          document.getElementById('CUOTA').value = data.CUOTA || '';
+          // Si la respuesta es un array, asumimos que deseas manejar múltiples resultados
+          if (Array.isArray(dataArray) && dataArray.length > 0) {
+            // Tomamos el primer elemento del array (puedes adaptar esto según tus necesidades)
+            const data = dataArray[0];
   
-          // Puedes agregar más lógica aquí según la estructura de tu API y tu formulario
+            // Iteramos sobre las propiedades del objeto data
+            for (const key in data) {
+              if (data.hasOwnProperty(key)) {
+                // Buscamos el elemento en el formulario por su ID y asignamos el valor
+                const inputElement = document.getElementById(key);
+                if (inputElement) {
+                  inputElement.value = data[key] || '';
+                }
+              }
+            }
+          } else {
+            console.log('No se encontraron datos para el código de pago especificado.');
+          }
         })
         .catch(error => {
           console.error('Error al obtener datos de la API:', error);
