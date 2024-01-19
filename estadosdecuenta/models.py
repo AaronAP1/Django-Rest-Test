@@ -81,7 +81,7 @@ class Cobros(models.Model):
     INDICADOR_COBRO_MORA = models.CharField( null=True)
     CODIGO_CONCEPTO_1 = models.CharField(null=True)
     IMPORTE_COBRO_COMPLETO = models.CharField(null=True)
-    IMPORTE_COBRO_CONCEPTO_1 = models.CharField(null=True)
+    
 
 
     
