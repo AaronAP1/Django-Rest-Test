@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Registro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: #1F730F;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      width: 200px;
+    }
+
+    .container {
+      color: #ffffff;
+      font-family: Helvetica, Verdana, sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      font: bold 20px/45px Helvetica, Verdana, sans-serif;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-columns {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    .form-column {
+      flex: 48%; /* Puedes ajustar este valor según tus necesidades */
+      margin-bottom: 10px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    select {
+      width: calc(100% - 16px); /* Ajuste para compensar el relleno en el select */
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn {
+      width: 48%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div>
+      <img src="https://media.discordapp.net/attachments/1197687583241670776/1197687686786453534/WhatsApp_Image_2023-11-20_at_8.11_2.png?ex=65bc2c94&is=65a9b794&hm=9130407c76d1690922695bf20c1a6a7e0a7ef3c1db242fbdb3798c37f50e8373&=&format=webp&quality=lossless" alt="Logo" class="logo">
+    </div>
+    <div class="search-containers">
+      <input type="text" placeholder="Codigo des Pago" class="search-input">
+      <button class="search-buttons">Buscar</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="card-body">
+      <form id="myForm" onsubmit="return validar()">
+        <div class="form-group form-columns">
+
+          <div class="form-column">
+            <legend style="color: black; font-weight: bold;">Datos de la Cuenta</legend>
+
+            <label for="user" style="color: black; margin-top: 10px;">Asesor:</label>
+            <input type="text" class="form-control" id="user" placeholder="Usuario">
+
+            <label for="email" style="color: black; margin-top: 10px;">MZLTS:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="pass1" style="color: black; margin-top: 10px;">Captación:<nav></nav></label>
+            <input type="password" class="form-control" id="pass1" placeholder="Contraseña">
+
+            <label for="email" style="color: black; margin-top: 10px;">Apellido Paterno:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Apellido Materno:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Nombres:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Doc:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Inicio Pago:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Inicial:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Cuotas:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Comentario:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+          </div>
+          <div class="form-column" style="margin-left: 20px;">
+            <label for="pass2" style="color: black; margin-top: 29px;">Numero:</label>
+            <input type="password" class="form-control" id="pass2" placeholder="Repetir Contraseña">
+
+            <label for="codipos" style="color: black; margin-top: 10px;">Dirección:</label>
+            <input type="text" class="form-control" id="codipos" placeholder="Código Postal">
+
+            <label for="email" style="color: black; margin-top: 10px;">Distrito:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Celular:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">M2:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Ubicación:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Precio Venta:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Saldo:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+            <label for="email" style="color: black; margin-top: 10px;">Cuota Mensual:</label>
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+
+          </div>
+        </div>
+
+
+
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

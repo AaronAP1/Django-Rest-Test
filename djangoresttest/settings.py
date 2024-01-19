@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'estadosdecuenta',
     'rest_framework',
-   
+    'bootstrap4',
     'import_export'
 ]
 
@@ -88,9 +88,14 @@ WSGI_APPLICATION = 'djangoresttest.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'clvback',
+        'USER' : 'postgres',
+        'PASSWORD' : 'root',
+        'HOST' : 'localhost',
+        'PORT' : '5432'
+    }
 }
 
 
