@@ -6,6 +6,8 @@ from django.db import connection
 def mi_pagina(request):
     return render(request, 'principal.html')
 
+def recaudaciones(request):
+    return render(request, 'recaudaciones.html')
 
 def busqueda(request):
     return render(request, 'listar.html')

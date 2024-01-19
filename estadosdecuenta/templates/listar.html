@@ -196,24 +196,18 @@
 
   <script>
     function buscarDatos() {
-      // Obtén el valor del código de pago
       var CODIGO_DE_PAGO = document.getElementById('CODIGO_DE_PAGO').value;
   
-      // Realiza la solicitud a tu API (reemplaza 'tu_api_url' con la URL de tu API)
       fetch('http://127.0.0.1:8000/consumo/api/clvdat/' + CODIGO_DE_PAGO)
         .then(response => response.json())
         .then(dataArray => {
           console.log('Datos de la API:', dataArray);
-  
-          // Si la respuesta es un array, asumimos que deseas manejar múltiples resultados
+
           if (Array.isArray(dataArray) && dataArray.length > 0) {
-            // Tomamos el primer elemento del array (puedes adaptar esto según tus necesidades)
             const data = dataArray[0];
   
-            // Iteramos sobre las propiedades del objeto data
             for (const key in data) {
               if (data.hasOwnProperty(key)) {
-                // Buscamos el elemento en el formulario por su ID y asignamos el valor
                 const inputElement = document.getElementById(key);
                 if (inputElement) {
                   inputElement.value = data[key] || '';
@@ -226,7 +220,6 @@
         })
         .catch(error => {
           console.error('Error al obtener datos de la API:', error);
-          // Puedes manejar el error de la manera que desees
         });
     }
   </script>
