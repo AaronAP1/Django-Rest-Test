@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'estadosdecuenta',
     'rest_framework',
-    'bootstrap4',
+    
     'import_export'
 ]
 
