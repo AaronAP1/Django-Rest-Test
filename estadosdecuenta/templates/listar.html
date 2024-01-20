@@ -297,7 +297,7 @@ footer {
     function buscarDatos() {
       var CODIGO_DE_PAGO = document.getElementById('CODIGO_DE_PAGO').value;
 
-      fetch('http://127.0.0.1:8000/consumo/api/clvdat/' + CODIGO_DE_PAGO)
+      fetch('https://clv-pytestado.onrender.com/consumo/api/clvdat/' + CODIGO_DE_PAGO)
         .then(response => response.json())
         .then(dataArray => {
           console.log('Datos de la API DATOS PERSONA:', dataArray);
@@ -329,7 +329,7 @@ footer {
       const CODIGO_DE_PAGO = document.getElementById("CODIGO_DE_PAGO").value;
 
       // Construye la URL de la API (reemplaza la URL de ejemplo con la URL real de tu API)
-      const apiUrl = `http://127.0.0.1:8000/consultarecau/` + CODIGO_DE_PAGO;
+      const apiUrl = `https://clv-pytestado.onrender.com/consultarecau/` + CODIGO_DE_PAGO;
 
       // Realiza la solicitud a la API usando fetch
       fetch(apiUrl)
@@ -377,7 +377,7 @@ footer {
     const CODIGO_DE_PAGO = document.getElementById("CODIGO_DE_PAGO").value;
 
     // Construye la URL de la API (reemplaza la URL de ejemplo con la URL real de tu API)
-    const apiUrl = `http://127.0.0.1:8000/consultacobros/` + CODIGO_DE_PAGO;
+    const apiUrl = `https://clv-pytestado.onrender.com/consultacobros/` + CODIGO_DE_PAGO;
 
     // Realiza la solicitud a la API usando fetch
     fetch(apiUrl)
