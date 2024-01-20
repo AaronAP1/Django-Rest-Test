@@ -65,7 +65,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-GZIP_TIMEOUT = 60 
+GZIP_TIMEOUT = 600
 
 ROOT_URLCONF = 'djangoresttest.urls'
 

@@ -8,6 +8,9 @@ pip install -r requerements.txt
 python manage.py collectstatic --no-input
 python manage.py migrate
 
+
+gunicorn djangoresttest.wsgi:application --workers 3 --timeout 600
+
 nombre_de_usuario="clvsuper"
 correo_electronico="xdxd@ejemplo.com"
 contrasena="contrasegura"
