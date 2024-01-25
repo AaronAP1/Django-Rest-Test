@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.db import connection
+from django.views import View
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 # Create your views here.
 def mi_pagina(request):
@@ -87,3 +90,20 @@ WHERE
     ]
 
     return JsonResponse(data, safe=False)
+
+
+class GeneratePDFView(View):
+    def get(self, request, *args, **kwargs):
+        template = get_template('listar.html')
+        context = {'title': 'Descargar Info'}
+        html = template.render(context)
+
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="descarga.pdf"'  
+
+        pisa_status = pisa.CreatePDF(html, dest=response)
+
+        if pisa_status.err:
+            return HttpResponse('Errorxdxd')
+
+        return response

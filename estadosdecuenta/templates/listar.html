@@ -155,9 +155,11 @@ footer {
   margin: 0 auto;
 }
   </style>
+
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
 </head>
 
-<body>
+<body >
   <nav class="navbar">
     <div>
       <img
@@ -285,6 +287,7 @@ footer {
       </table>
   </div>
 </div>
+<a href="{% url 'descargar' %}">Descargar PDF</a>
 
 <br><br><br><br><br><br>
 
@@ -293,8 +296,9 @@ footer {
     <p>&copy; 2024 Constructora la Venta  | Todos los derechos reservados</p>
   </div>
 </footer>
+
   <script>   // Script de informacion de la persona listo
-    function buscarDatos() {
+    async function buscarDatos() {
       var CODIGO_DE_PAGO = document.getElementById('CODIGO_DE_PAGO').value;
 
       fetch('https://clv-pytestado.onrender.com/consumo/api/clvdat/' + CODIGO_DE_PAGO)
@@ -328,21 +332,35 @@ footer {
       // Obtén el valor del input de búsqueda
       const CODIGO_DE_PAGO = document.getElementById("CODIGO_DE_PAGO").value;
 
-      // Construye la URL de la API (reemplaza la URL de ejemplo con la URL real de tu API)
-      const apiUrl = `https://clv-pytestado.onrender.com/consultarecau/` + CODIGO_DE_PAGO;
+  // Construye la URL de la API (reemplaza la URL de ejemplo con la URL real de tu API)
+  const apiUrl = `https://clv-pytestado.onrender.com/consultarecau/` + CODIGO_DE_PAGO;
 
-      // Realiza la solicitud a la API usando fetch
-      fetch(apiUrl)
-        .then(response => response.json()) // Parsea la respuesta a JSON
-        .then(data => {
-          console.log('Datos de la API RECAUDACIONES:', data); // Agrega este console.log
-          // Manipula los datos de la respuesta y actualiza la tabla
-          actualizarTabla(data);
-        })
-        .catch(error => {
-          console.error('Error al realizar la solicitud a la API:', error);
-        });
-    }
+  // Realiza la solicitud a la API usando fetch
+  fetch(apiUrl)
+    .then(response => response.json()) // Parsea la respuesta a JSON
+    .then(data => {
+      console.log('Datos de la API RECAUDACIONES:', data); // Agrega este console.log
+      // Manipula los datos de la respuesta y actualiza la tabla
+      actualizarTabla(data);
+
+      // Actualiza los campos en el HTML antes de la generación del PDF
+      if (Array.isArray(data) && data.length > 0) {
+        const dataItem = data[0];
+
+        for (const key in dataItem) {
+          if (dataItem.hasOwnProperty(key)) {
+            const inputElement = document.getElementById(key);
+            if (inputElement) {
+              inputElement.value = dataItem[key] || '';
+            }
+          }
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Error al realizar la solicitud a la API:', error);
+    });
+}
 
     function actualizarTabla(data) {
       // Obtén la referencia a la tabla
@@ -419,24 +437,6 @@ footer {
     }
   }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 

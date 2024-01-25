@@ -1,6 +1,6 @@
 from rest_framework import routers
 from .api import DataClvviem, CobrosClvviem, RecaudacionClvviem
-from .views import mi_pagina, recaudaciones, tu_vista, busqueda, recaudacionesbusqueda
+from .views import mi_pagina, recaudaciones, tu_vista, busqueda, recaudacionesbusqueda, GeneratePDFView
 from django.urls import path, include
 
 router = routers.DefaultRouter()
@@ -15,6 +15,7 @@ urlpatterns = [
     path('recaudaciones/', recaudaciones, name='recaudaciones'),
     path('consultacobros/<str:codigo_pago>/', tu_vista, name='nombre_de_la_vista'),
     path('consultarecau/<str:codigo_pago>/', recaudacionesbusqueda, name='nombre_de_la_vista'),
+    path('descargar/', GeneratePDFView.as_view(), name='descargar'),
     # Agrega esta línea para tu página personalizada
     path('consumo/', include(router.urls)),
 ]

@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
+
 
 
 
@@ -72,7 +72,7 @@ ROOT_URLCONF = 'djangoresttest.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'mi_aplicacion', 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,10 +92,14 @@ WSGI_APPLICATION = 'djangoresttest.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=int(os.environ.get('DB_CONN_MAX_AGE', 600)),  # 600 segundos (10 minutos) como valor predeterminado
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'clvback',
+        'USER' : 'postgres',
+        'PASSWORD' : 'root',
+        'HOST' : 'localhost',
+        'PORT' : '5432'
+    }
 }
 
 
