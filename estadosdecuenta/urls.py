@@ -1,6 +1,6 @@
 from rest_framework import routers
 from .api import DataClvviem, CobrosClvviem, RecaudacionClvviem
-from .views import mi_pagina, recaudaciones, tu_vista, busqueda, recaudacionesbusqueda, GeneratePDFView
+from .views import mi_pagina, recaudaciones, tu_vista, busqueda, recaudacionesbusqueda, GeneratePDFView, NuevaVistaPrincipal
 from django.urls import path, include
 
 router = routers.DefaultRouter()
@@ -11,6 +11,7 @@ router.register('api/clvrec', RecaudacionClvviem, 'Recaudaciones')
 
 urlpatterns = [
     path('', mi_pagina, name='mi_pagina'),
+     path('nueva/', NuevaVistaPrincipal.as_view(), name='nueva_vista_principal'),
     path('listarb/', busqueda, name='listar'),
     path('recaudaciones/', recaudaciones, name='recaudaciones'),
     path('consultacobros/<str:codigo_pago>/', tu_vista, name='nombre_de_la_vista'),

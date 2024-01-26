@@ -15,6 +15,10 @@ def recaudaciones(request):
 def busqueda(request):
     return render(request, 'listar.html')
 
+class NuevaVistaPrincipal(View):
+    def get(self, request):
+        # Renderizar el nuevo template deseado
+        return render(request, 'listar.html')
 
 def tu_vista(request, codigo_pago):
     with connection.cursor() as cursor:
