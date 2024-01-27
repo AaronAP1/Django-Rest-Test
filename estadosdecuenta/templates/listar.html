@@ -104,62 +104,66 @@
     }
 
     .tables-container {
-  display: flex;
-  justify-content: space-around;
-  overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si es necesario */
-}
+      display: flex;
+      justify-content: space-around;
+      overflow-x: auto;
+      /* Agrega una barra de desplazamiento horizontal si es necesario */
+    }
 
-.container2 {
-  position: relative;
-  max-height: 400px;
-  overflow-y: auto;
-  width: 140%; /* Ajusta según sea necesario */
-  margin-top: 50px;
-  margin-left: 60px;
-  margin-right: 30px;
-}
+    .container2 {
+      position: relative;
+      max-height: 400px;
+      overflow-y: auto;
+      width: 140%;
+      /* Ajusta según sea necesario */
+      margin-top: 50px;
+      margin-left: 60px;
+      margin-right: 30px;
+    }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
 
-th, td {
-  padding: 15px;
-  text-align: left;
-}
+    th,
+    td {
+      padding: 15px;
+      text-align: left;
+    }
 
-th {
-  background-color: #4CAF50;
-  color: white;
-}
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
 
-tr:hover {
-  background-color: rgba(255, 150, 0, 0.3);
-}
+    tr:hover {
+      background-color: rgba(255, 150, 0, 0.3);
+    }
 
-thead tr {
-  position: sticky !important;
-  top: 0;
-  background-color: #f2f2f2;
-}
-footer {
-  background-color: #1F730F;
-  color: #fff;
-  text-align: center;
-  padding: 10px 0;
-}
+    thead tr {
+      position: sticky !important;
+      top: 0;
+      background-color: #f2f2f2;
+    }
 
-.containerflo {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+    footer {
+      background-color: #1F730F;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .containerflo {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   </style>
 
-<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+  <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
 </head>
 
-<body >
+<body>
   <nav class="navbar">
     <div>
       <img
@@ -180,69 +184,70 @@ footer {
             <legend style="color: black; font-weight: bold;">Datos de la Cuenta</legend>
 
             <label for="ASESOR" style="color: black; margin-top: 10px;">Asesor:</label>
-            <input type="text" class="form-control" id="ASESOR">
+            <input type="text" class="form-control" id="ASESOR" name="ASESOR">
 
             <label for="MZLTS" style="color: black; margin-top: 10px;">MZLTS:</label>
-            <input type="text" class="form-control" id="MZLTS">
+            <input type="text" class="form-control" id="MZLTS" name="MZLTS">
 
             <label for="CAPTACION" style="color: black; margin-top: 10px;">Captación:</label>
-            <input type="text" class="form-control" id="CAPTACION">
+            <input type="text" class="form-control" id="CAPTACION" name="CAPTACION">
 
             <label for="APELLIDO_PATERNO" style="color: black; margin-top: 10px;">Apellido Paterno:</label>
-            <input type="text" class="form-control" id="APELLIDO_PATERNO">
+            <input type="text" class="form-control" id="APELLIDO_PATERNO" name="APELLIDO_PATERNO">
 
             <label for="APELLIDO_MATERNO" style="color: black; margin-top: 10px;">Apellido Materno:</label>
-            <input type="text" class="form-control" id="APELLIDO_MATERNO">
+            <input type="text" class="form-control" id="APELLIDO_MATERNO" name="APELLIDO_MATERNO">
 
             <label for="NOMBRES" style="color: black; margin-top: 10px;">Nombres:</label>
-            <input type="text" class="form-control" id="NOMBRES">
+            <input type="text" class="form-control" id="NOMBRES" name="NOMBRES">
 
             <label for="DOC" style="color: black; margin-top: 10px;">Doc:</label>
-            <input type="text" class="form-control" id="DOC">
+            <input type="text" class="form-control" id="DOC" name="DOC">
 
             <label for="INICIOPAGO" style="color: black; margin-top: 10px;">Inicio Pago:</label>
-            <input type="text" class="form-control" id="INICIOPAGO">
+            <input type="text" class="form-control" id="INICIOPAGO" name="iniciopago">
 
             <label for="INICIAL" style="color: black; margin-top: 10px;">Inicial:</label>
-            <input type="text" class="form-control" id="INICIAL">
+            <input type="text" class="form-control" id="INICIAL" name="INICIAL">
 
             <label for="CUOTAS" style="color: black; margin-top: 10px;">Cuotas:</label>
-            <input type="text" class="form-control" id="CUOTAS" autocomplete="on">
+            <input type="text" class="form-control" id="CUOTAS" autocomplete="on" name="CUOTAS">
 
             <label for="COMENTARIO" style="color: black; margin-top: 10px;">Comentario:</label>
-            <input type="text" class="form-control" id="COMENTARIO" autocomplete="on">
+            <input type="text" class="form-control" id="COMENTARIO" autocomplete="on" name="COMENTARIO">
           </div>
           <div class="form-column" style="margin-left: 20px;">
             <label for="NUMERO" style="color: black; margin-top: 29px;">Numero:</label>
-            <input type="text" class="form-control" id="NUMERO">
+            <input type="text" class="form-control" id="NUMERO" name="NUMERO">
 
             <label for="DIRECCION" style="color: black; margin-top: 10px;">Dirección:</label>
-            <input type="text" class="form-control" id="DIRECCION">
+            <input type="text" class="form-control" id="DIRECCION" name="DIRECCION">
 
             <label for="DISTRITO" style="color: black; margin-top: 10px;">Distrito:</label>
-            <input type="text" class="form-control" id="DISTRITO">
+            <input type="text" class="form-control" id="DISTRITO" name="DISTRITO">
 
             <label for="CELULAR" style="color: black; margin-top: 10px;">Celular:</label>
-            <input type="text" class="form-control" id="CELULAR">
+            <input type="text" class="form-control" id="CELULAR" name="CELULAR">
 
             <label for="EMAIL" style="color: black; margin-top: 10px;">Email:</label>
-            <input type="email" class="form-control" id="EMAIL">
+            <input type="text" class="form-control" id="EMAIL" name="EMAIL">
 
             <label for="M2" style="color: black; margin-top: 10px;">M2:</label>
-            <input type="text" class="form-control" id="M2">
+            <input type="text" class="form-control" id="M2" name="M2">
 
             <label for="UBICACION" style="color: black; margin-top: 10px;">Ubicación:</label>
-            <input type="text" class="form-control" id="UBICACION">
+            <input type="text" class="form-control" id="UBICACION" name="UBICACION">
 
             <label for="PRECIOVENTA" style="color: black; margin-top: 10px;">Precio Venta:</label>
-            <input type="text" class="form-control" id="PRECIOVENTA">
+            <input type="text" class="form-control" id="PRECIOVENTA" name="PRECIOVENTA">
 
             <label for="SALDO" style="color: black; margin-top: 10px;">Saldo:</label>
-            <input type="text" class="form-control" id="SALDO">
+            <input type="text" class="form-control" id="SALDO" name="SALDO">
 
             <label for="CUOTA" style="color: black; margin-top: 10px;">Cuota Mensual:</label>
-            <input type="text" class="form-control" id="CUOTA">
+            <input type="text" class="form-control" id="CUOTA" name="CUOTA">
           </div>
+
         </div>
       </form>
     </div>
@@ -250,58 +255,58 @@ footer {
 
 
   <div class="tables-container">
-    
+
 
     <div class="container2" id="cobrosTable">
-        <div>
-            <h2>Cronograma de Pagos</h2>
-          </div> 
-        <table class="">
-            <thead>
-                <tr>
-                    <th>Recibo</th>
-                    <th>Descripción recibo</th>
-                    <th>Importe</th>
-                    <th>Vencimiento</th>
-                    <th>Estado</th>
-                    <th>Vencido</th>
-                </tr>
-            </thead>
-            <tbody style="color: black;">
-                <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
-            </tbody>
-        </table>
+      <div>
+        <h2>Cronograma de Pagos</h2>
+      </div>
+      <table class="">
+        <thead>
+          <tr>
+            <th>Recibo</th>
+            <th>Descripción recibo</th>
+            <th>Importe</th>
+            <th>Vencimiento</th>
+            <th>Estado</th>
+            <th>Vencido</th>
+          </tr>
+        </thead>
+        <tbody style="color: black;">
+          <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
+        </tbody>
+      </table>
     </div>
 
     <div class="container2" id="reciboTable">
       <div>
         <h2>Pagos Realizados</h2>
-      </div>  
+      </div>
       <table class="">
-          <thead>
-              <tr>
-                  <th>Recibo</th>
-                  <th>Descripción recibo</th>
-                  <th>Pagado</th>
-                  <th>Fecha de Pago</th>
-                  <th>Forma Pago</th>
-              </tr>
-          </thead>
-          <tbody style="color: black;">
-              <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
-          </tbody>
+        <thead>
+          <tr>
+            <th>Recibo</th>
+            <th>Descripción recibo</th>
+            <th>Pagado</th>
+            <th>Fecha de Pago</th>
+            <th>Forma Pago</th>
+          </tr>
+        </thead>
+        <tbody style="color: black;">
+          <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
+        </tbody>
       </table>
+    </div>
   </div>
-</div>
-<a href="{% url 'descargar' %}">Descargar PDF</a>
+  <a href="{% url 'descargar' %}">Descargar PDF</a>
 
-<br><br><br><br><br><br>
+  <br><br><br><br><br><br>
 
-<footer>
-  <div class="containerflo">
-    <p>&copy; 2024 Constructora la Venta  | Todos los derechos reservados</p>
-  </div>
-</footer>
+  <footer>
+    <div class="containerflo">
+      <p>&copy; 2024 Constructora la Venta | Todos los derechos reservados</p>
+    </div>
+  </footer>
 
   <script>   // Script de informacion de la persona listo
     async function buscarDatos() {
@@ -315,14 +320,37 @@ footer {
           if (Array.isArray(dataArray) && dataArray.length > 0) {
             const data = dataArray[0];
 
-            for (const key in data) {
-              if (data.hasOwnProperty(key)) {
-                const inputElement = document.getElementById(key);
-                if (inputElement) {
-                  inputElement.value = data[key] || '';
-                }
-              }
-            }
+            // Asignar valores específicos a los campos del formulario
+            document.getElementById('ASESOR').value = data.ASESOR || '';
+            document.getElementById('MZLTS').value = data.MZLTS || '';
+            document.getElementById('CAPTACION').value = data.CAPTACION || '';
+            document.getElementById('APELLIDO_PATERNO').value = data.APELLIDO_PATERNO || '';
+            document.getElementById('APELLIDO_MATERNO').value = data.APELLIDO_MATERNO || '';
+            document.getElementById('NOMBRES').value = data.NOMBRES || '';
+            document.getElementById('DOC').value = data.DOC || '';
+            document.getElementById('INICIOPAGO').value = data.INICIOPAGO || '';
+            document.getElementById('INICIAL').value = data.INICIAL || '';
+            document.getElementById('CUOTAS').value = data.CUOTAS || '';
+            document.getElementById('COMENTARIO').value = data.COMENTARIO || '';
+            document.getElementById('NUMERO').value = data.NUMERO || '';
+            document.getElementById('DIRECCION').value = data.DIRECCION || '';
+            document.getElementById('DISTRITO').value = data.DISTRITO || '';
+            document.getElementById('CELULAR').value = data.CELULAR || '';
+            document.getElementById('EMAIL').value = data.EMAIL || '';
+            document.getElementById('M2').value = data.M2 || '';
+            document.getElementById('UBICACION').value = data.UBICACION || '';
+            document.getElementById('PRECIOVENTA').value = data.PRECIOVENTA || '';
+            document.getElementById('SALDO').value = data.SALDO || '';
+            document.getElementById('CUOTA').value = data.CUOTA || '';
+
+            // Imprimir valores en la consola del navegador
+            console.log('Valores asignados en HTML:', {
+              ASESOR: document.getElementById('ASESOR').value,
+              MZLTS: document.getElementById('MZLTS').value,
+              // ... otros campos ...
+            });
+
+
           } else {
             console.log('No se encontraron datos para el código de pago especificado.');
           }
@@ -331,6 +359,7 @@ footer {
           console.error('Error al obtener datos de la API:', error);
         });
     }
+
   </script>
 
   <script>  //Script de RECAUDACIONES 
@@ -338,35 +367,35 @@ footer {
       // Obtén el valor del input de búsqueda
       const CODIGO_DE_PAGO = document.getElementById("CODIGO_DE_PAGO").value;
 
-  // Construye la URL de la API (reemplaza la URL de ejemplo con la URL real de tu API)
-  const apiUrl = `https://clv-pytestado.onrender.com/consultarecau/` + CODIGO_DE_PAGO;
+      // Construye la URL de la API (reemplaza la URL de ejemplo con la URL real de tu API)
+      const apiUrl = `https://clv-pytestado.onrender.com/consultarecau/` + CODIGO_DE_PAGO;
 
-  // Realiza la solicitud a la API usando fetch
-  fetch(apiUrl)
-    .then(response => response.json()) // Parsea la respuesta a JSON
-    .then(data => {
-      console.log('Datos de la API RECAUDACIONES:', data); // Agrega este console.log
-      // Manipula los datos de la respuesta y actualiza la tabla
-      actualizarTabla(data);
+      // Realiza la solicitud a la API usando fetch
+      fetch(apiUrl)
+        .then(response => response.json()) // Parsea la respuesta a JSON
+        .then(data => {
+          console.log('Datos de la API RECAUDACIONES:', data); // Agrega este console.log
+          // Manipula los datos de la respuesta y actualiza la tabla
+          actualizarTabla(data);
 
-      // Actualiza los campos en el HTML antes de la generación del PDF
-      if (Array.isArray(data) && data.length > 0) {
-        const dataItem = data[0];
+          // Actualiza los campos en el HTML antes de la generación del PDF
+          if (Array.isArray(data) && data.length > 0) {
+            const dataItem = data[0];
 
-        for (const key in dataItem) {
-          if (dataItem.hasOwnProperty(key)) {
-            const inputElement = document.getElementById(key);
-            if (inputElement) {
-              inputElement.value = dataItem[key] || '';
+            for (const key in dataItem) {
+              if (dataItem.hasOwnProperty(key)) {
+                const inputElement = document.getElementById(key);
+                if (inputElement) {
+                  inputElement.value = dataItem[key] || '';
+                }
+              }
             }
           }
-        }
-      }
-    })
-    .catch(error => {
-      console.error('Error al realizar la solicitud a la API:', error);
-    });
-}
+        })
+        .catch(error => {
+          console.error('Error al realizar la solicitud a la API:', error);
+        });
+    }
 
     function actualizarTabla(data) {
       // Obtén la referencia a la tabla
@@ -395,40 +424,40 @@ footer {
     }
   </script>
 
-<script>  //Script de COBROS
-  function buscarDatos3() {
-    // Obtén el valor del input de búsqueda
-    const CODIGO_DE_PAGO = document.getElementById("CODIGO_DE_PAGO").value;
+  <script>  //Script de COBROS
+    function buscarDatos3() {
+      // Obtén el valor del input de búsqueda
+      const CODIGO_DE_PAGO = document.getElementById("CODIGO_DE_PAGO").value;
 
-    // Construye la URL de la API (reemplaza la URL de ejemplo con la URL real de tu API)
-    const apiUrl = `https://clv-pytestado.onrender.com/consultacobros/` + CODIGO_DE_PAGO;
+      // Construye la URL de la API (reemplaza la URL de ejemplo con la URL real de tu API)
+      const apiUrl = `https://clv-pytestado.onrender.com/consultacobros/` + CODIGO_DE_PAGO;
 
-    // Realiza la solicitud a la API usando fetch
-    fetch(apiUrl)
-      .then(response => response.json()) // Parsea la respuesta a JSON
-      .then(data => {
-        console.log('Datos de la API COBROS:', data); // Agrega este console.log
-        // Manipula los datos de la respuesta y actualiza la tabla
-        actualizarTabla2(data);
-      })
-      .catch(error => {
-        console.error('Error al realizar la solicitud a la API:', error);
-      });
-  }
+      // Realiza la solicitud a la API usando fetch
+      fetch(apiUrl)
+        .then(response => response.json()) // Parsea la respuesta a JSON
+        .then(data => {
+          console.log('Datos de la API COBROS:', data); // Agrega este console.log
+          // Manipula los datos de la respuesta y actualiza la tabla
+          actualizarTabla2(data);
+        })
+        .catch(error => {
+          console.error('Error al realizar la solicitud a la API:', error);
+        });
+    }
 
-  function actualizarTabla2(data) {
-    // Obtén la referencia a la tabla
-    const tabla = document.querySelector("#cobrosTable table tbody");
+    function actualizarTabla2(data) {
+      // Obtén la referencia a la tabla
+      const tabla = document.querySelector("#cobrosTable table tbody");
 
-    // Limpia el contenido actual de la tabla
-    tabla.innerHTML = '';
+      // Limpia el contenido actual de la tabla
+      tabla.innerHTML = '';
 
-    // Verifica si los datos son un array y si hay al menos un elemento
-    if (Array.isArray(data) && data.length > 0) {
-      // Itera sobre los datos y crea filas para la tabla
-      data.forEach(item => {
-        const fila = document.createElement("tr");
-        fila.innerHTML = `
+      // Verifica si los datos son un array y si hay al menos un elemento
+      if (Array.isArray(data) && data.length > 0) {
+        // Itera sobre los datos y crea filas para la tabla
+        data.forEach(item => {
+          const fila = document.createElement("tr");
+          fila.innerHTML = `
         <td>${item.c_numero_recibo}</td>
         <td>${item.c_descripcion}</td>
         <td>${item.c_importe}</td>
@@ -436,13 +465,13 @@ footer {
         <td>${item.c_indicador_mora}</td>
         <td>${item.c_observaciones}</td>
       `;
-        tabla.appendChild(fila);
-      });
-    } else {
-      console.log('No se encontraron datos para el código de pago especificado.');
+          tabla.appendChild(fila);
+        });
+      } else {
+        console.log('No se encontraron datos para el código de pago especificado.');
+      }
     }
-  }
-</script>
+  </script>
 
 </body>
 

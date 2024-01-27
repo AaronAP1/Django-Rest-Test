@@ -5,6 +5,7 @@ from django.views import View
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 
+
 # Create your views here.
 def mi_pagina(request):
     return render(request, 'principal.html')
@@ -111,3 +112,6 @@ class GeneratePDFView(View):
             return HttpResponse('Errorxdxd')
 
         return response
+
+    
+
