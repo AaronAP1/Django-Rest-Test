@@ -60,10 +60,7 @@ class DataConsolidado(models.Model):
             'CALC_MORA',
             'FECHA_ACTUALIZADA'
         )
-
-  
     
-
 class Cobros(models.Model):
     ID_COBROS = models.CharField(primary_key=True)
     CODIGO_INTEGRANTE = models.CharField(null=True)
@@ -82,10 +79,6 @@ class Cobros(models.Model):
     CODIGO_CONCEPTO_1 = models.CharField(null=True)
     IMPORTE_COBRO_COMPLETO = models.CharField(null=True)
     
-
-
-    
-
 class Recaudaciones(models.Model):
     ID_RECAUDACIONES = models.CharField(primary_key=True)
     CODIGO_INTEGRANTE = models.CharField(null=True)
@@ -103,8 +96,6 @@ class Recaudaciones(models.Model):
     FORMA_PAGO = models.TextField(null=True)
     CALC_MORA = models.CharField(null=True)
     FECHA_ACTUALIZADA = models.DateField(null=True)
-
-
 
 class Resumen(models.Model):
     ID_RESUMEN = models.CharField(primary_key=True, max_length=10) 
