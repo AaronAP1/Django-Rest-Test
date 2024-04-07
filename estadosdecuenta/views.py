@@ -41,10 +41,10 @@ def tu_vista(request, codigo_pago):
         """
         cursor.execute(consulta, [codigo_pago])
 
-        # Recuperar los resultados de la consulta
+       
         resultados = cursor.fetchall()
 
-    # Procesar los resultados como desees
+   
     data = [
         {
             'c_numero_recibo': row[0],
